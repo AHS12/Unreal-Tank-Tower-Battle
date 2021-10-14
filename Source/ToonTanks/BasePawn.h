@@ -15,8 +15,8 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		float Speed = 400.f;
+	/*UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float Speed = 400.f;*/
 
 protected:
 	// Called when the game starts or when spawned
@@ -34,8 +34,8 @@ private:
 		USceneComponent* ProjectileSpawnPoint;
 
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Super Private", meta = (AllowPrivateAccess = true))
-		float PrivateSpeed = 500.f;
+	/*UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Super Private", meta = (AllowPrivateAccess = true))
+		float PrivateSpeed = 500.f;*/
 
 
 
@@ -44,8 +44,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
 
 
 };
