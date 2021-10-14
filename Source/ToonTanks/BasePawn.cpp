@@ -30,8 +30,9 @@ ABasePawn::ABasePawn()
 void ABasePawn::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Warning, TEXT("Hello"));
-	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Hello from pawn!"));
+	//UE_LOG(LogTemp, Warning, TEXT("Hello"));
+	FString Grettings = FString(TEXT("Hello from ")) + FString(*GetOwner()->GetName());
+	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, Grettings);
 
 
 }
