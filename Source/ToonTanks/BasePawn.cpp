@@ -27,22 +27,21 @@ ABasePawn::ABasePawn()
 }
 
 // Called when the game starts or when spawned
-void ABasePawn::BeginPlay()
-{
-	Super::BeginPlay();
-	//UE_LOG(LogTemp, Warning, TEXT("Hello"));
-	FString Grettings = FString(TEXT("Hello from ")) + FString(*GetOwner()->GetName());
-	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, Grettings);
-
-
-}
+//void ABasePawn::BeginPlay()
+//{
+//	Super::BeginPlay();
+//}
 
 // Called every frame
-void ABasePawn::Tick(float DeltaTime)
+//void ABasePawn::Tick(float DeltaTime)
+//{
+//	Super::Tick(DeltaTime);
+//
+//}
+
+void ABasePawn::RotateTurret(FVector LookAtTarget)
 {
-	Super::Tick(DeltaTime);
-
+	FVector ToTarget = LookAtTarget - TurretMesh->GetComponentLocation();
+	FRotator LookAtRotation = FRotator(0.f, ToTarget.Rotation().Yaw, 0.f);
+	TurretMesh->SetWorldRotation(LookAtRotation);
 }
-
-
-
