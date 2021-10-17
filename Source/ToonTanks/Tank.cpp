@@ -41,6 +41,7 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
+	PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ATank::Fire);
 
 }
 // Called every frame
@@ -69,7 +70,7 @@ void ATank::Tick(float DeltaTime)
 
 void ATank::Move(float value)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Moving W S.Value: %f"), value);
+	//UE_LOG(LogTemp, Warning, TEXT("Moving W S.Value: %f"), value);
 	FVector DeltaLocation = FVector::ZeroVector;
 	DeltaLocation.X = value * Speed * UGameplayStatics::GetWorldDeltaSeconds(this);
 	AddActorLocalOffset(DeltaLocation, true);
@@ -77,7 +78,7 @@ void ATank::Move(float value)
 
 void ATank::Turn(float value)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Moving A D.Value: %f"), value);
+	//UE_LOG(LogTemp, Warning, TEXT("Moving A D.Value: %f"), value);
 	FRotator DeltaRotation = FRotator::ZeroRotator;
 	DeltaRotation.Yaw = value * TurnRate * UGameplayStatics::GetWorldDeltaSeconds(this);
 	AddActorLocalRotation(DeltaRotation, true);
