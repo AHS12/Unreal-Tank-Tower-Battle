@@ -36,13 +36,8 @@ private:
 		UStaticMeshComponent* TurretMesh;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, category = "Components", meta = (AllowPrivateAccess = true))
 		USceneComponent* ProjectileSpawnPoint;
-
-
-	/*UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Super Private", meta = (AllowPrivateAccess = true))
-		float PrivateSpeed = 500.f;*/
-
-
-
+	UPROPERTY(EditDefaultsonly, category = "Combat")
+		TSubclassOf<class AProjectile> ProjectileClass;
 
 public:
 	// Called every frame
