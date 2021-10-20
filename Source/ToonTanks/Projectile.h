@@ -25,6 +25,8 @@ public:
 
 private:
 
+	float Damage = 50.f;
+
 	UPROPERTY(EditDefaultsOnly, category = "Combat")
 		UStaticMeshComponent* ProjectileMesh;
 	UPROPERTY(VisibleAnywhere, Category = "Movement")

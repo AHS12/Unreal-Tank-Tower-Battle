@@ -7,12 +7,12 @@
 #include "HealthComponent.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class TOONTANKS_API UHealthComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
+public:
 	// Sets default values for this component's properties
 	UHealthComponent();
 
@@ -20,9 +20,24 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-		
+private:
+	float Health = 0.f;
+
+
+	UPROPERTY(EditAnywhere)
+		float MaxHealth = 100.f;
+
+
+	UFUNCTION()
+		void DamageTaken(
+			AActor* DamagedActor,
+			float Damage,
+			const UDamageType* DamageType,
+			class AController* Instigator,
+			AActor* DamageCauser
+		);
 };
