@@ -29,5 +29,13 @@ private:
 		UStaticMeshComponent* ProjectileMesh;
 	UPROPERTY(VisibleAnywhere, Category = "Movement")
 		class UProjectileMovementComponent* ProjectileMovementComponent;
+	UFUNCTION()
+		void OnHit(
+			UPrimitiveComponent* HitComp,
+			AActor* OtherActor,
+			UPrimitiveComponent* OtherComp,
+			FVector NormalImpluse,
+			const FHitResult& Hit
+		);
 
 };
