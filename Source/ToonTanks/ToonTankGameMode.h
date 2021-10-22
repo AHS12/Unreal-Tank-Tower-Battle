@@ -7,11 +7,22 @@
 #include "ToonTankGameMode.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class TOONTANKS_API AToonTankGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
-	
+
+public:
+	void ActorDied(AActor* DeadActor);
+
+protected:
+
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+private:
+	class ATank* Tank;
+
 };

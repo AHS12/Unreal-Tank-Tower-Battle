@@ -46,6 +46,12 @@ void ATower::CheckFireCondition()
 	}
 }
 
+void ATower::HandleDestruction()
+{
+	Super::HandleDestruction();
+	Destroy();
+}
+
 // Called every frame
 void ATower::Tick(float DeltaTime)
 {
