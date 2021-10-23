@@ -40,4 +40,9 @@ private:
 			const FHitResult& Hit
 		);
 
+	UPROPERTY(EditDefaultsOnly, category = "Combat")
+		class UParticleSystem* HitParticle;
+
+
+
 };
