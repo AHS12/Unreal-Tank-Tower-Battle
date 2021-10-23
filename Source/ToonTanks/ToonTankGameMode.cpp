@@ -6,7 +6,7 @@
 #include "Tank.h"
 #include "Tower.h"
 #include "ToonTankPlayerController.h"
-
+#define OUT
 
 void AToonTankGameMode::BeginPlay()
 {
@@ -17,6 +17,7 @@ void AToonTankGameMode::BeginPlay()
 
 void AToonTankGameMode::HandleGameStart()
 {
+	TargetTowers = GetTargetTowerCount();
 	Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
 	ToonTankController = Cast<AToonTankPlayerController>(UGameplayStatics::GetPlayerController(this, 0));
 
@@ -40,6 +41,13 @@ void AToonTankGameMode::HandleGameStart()
 	}
 }
 
+int32 AToonTankGameMode::GetTargetTowerCount()
+{
+	TArray <AActor*> Towers;
+	UGameplayStatics::GetAllActorsOfClass(this, ATower::StaticClass(), OUT Towers);
+	return Towers.Num();
+}
+
 void AToonTankGameMode::ActorDied(AActor* DeadActor)
 {
 	if (DeadActor == Tank) {
@@ -52,10 +60,18 @@ void AToonTankGameMode::ActorDied(AActor* DeadActor)
 		if (ToonTankController) {
 			ToonTankController->SetPlayerEnabledState(false);
 		}
+		GameOver(false);
 
 	}
 	else if (ATower* DestroyedTower = Cast<ATower>(DeadActor)) {
 		DestroyedTower->HandleDestruction();
+		TargetTowers--;
+
+		if (TargetTowers == 0) {
+			GameOver(true);
+		}
+
+
 	}
 
 }
