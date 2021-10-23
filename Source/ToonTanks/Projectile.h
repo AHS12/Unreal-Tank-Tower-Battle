@@ -42,6 +42,9 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, category = "Combat")
 		class UParticleSystem* HitParticle;
+	
+	UPROPERTY(VisibleAnywhere, Category = "Combat")
+		class UParticleSystemComponent* TrailParticles;
 
 
 
