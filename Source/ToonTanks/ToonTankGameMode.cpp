@@ -20,6 +20,8 @@ void AToonTankGameMode::HandleGameStart()
 	Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
 	ToonTankController = Cast<AToonTankPlayerController>(UGameplayStatics::GetPlayerController(this, 0));
 
+	StartGame();
+
 	if (ToonTankController) {
 		ToonTankController->SetPlayerEnabledState(false);
 		FTimerHandle PlayerEnabledTimerHandle;
