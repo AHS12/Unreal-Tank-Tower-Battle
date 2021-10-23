@@ -40,6 +40,8 @@ private:
 		USceneComponent* ProjectileSpawnPoint;
 	UPROPERTY(EditDefaultsonly, category = "Combat")
 		TSubclassOf<class AProjectile> ProjectileClass;
+	UPROPERTY(EditAnywhere, category = "Combat")
+		class UParticleSystem* DeathParticle;
 
 public:
 	// Called every frame
